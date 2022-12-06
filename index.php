@@ -96,7 +96,8 @@ include("includes/topbar.php");
           <h2>Reservation</h2>
           <p>Book an Appointment</p>
         </div>
-        <div class="calendar"></div>
+        <h5>Handling the Stress so Your Event is a Success! Book your appointment with us now!</h5><br/>
+        <a href="appointment.php" class="book-a-table-btn" style="margin-left: -6px;">BOOK NOW</a>
       </div>
     </section><!-- End Book A Appointment Section -->
 
@@ -223,44 +224,3 @@ include("includes/topbar.php");
   </main><!-- End #main -->
 
 <?php include("includes/footer.php"); ?>
-
-<script>
-    function onClickHandler(date, obj) {
-        /**
-         * @date is an array which be included dates(clicked date at first index)
-         * @obj is an object which stored calendar interal data.
-         * @obj.calendar is an element reference.
-         * @obj.storage.activeDates is all toggled data, If you use toggle type calendar.
-         * @obj.storage.events is all events associated to this date
-         */
-
-        var $calendar = obj.calendar;
-        var $box = $calendar.parent().siblings('.box').show();
-        var text = 'You choose date ';
-
-        if(date[0] !== null) {
-            text += date[0].format('YYYY-MM-DD');
-        }
-
-        if(date[0] !== null && date[1] !== null) {
-            text += ' ~ ';
-        } else if(date[0] === null && date[1] == null) {
-            text += 'nothing';
-        }
-
-        if(date[1] !== null) {
-            text += date[1].format('YYYY-MM-DD');
-        }
-
-        $box.text(text);
-    }
-
-    // Default Calendar
-    $('.calendar').pignoseCalendar({
-        select: onClickHandler,
-        theme: 'dark',
-        disabledDates: [
-            '2022-12-08'
-        ]
-    });
-</script>

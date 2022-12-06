@@ -125,6 +125,13 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="<?php echo ($active == 'places') ? 'active' : '' ?>sidebar-link waves-effect waves-dark sidebar-link" href="meeting-places.php"
+                                aria-expanded="false">
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                                <span class="hide-menu">Meeting Places</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="<?php echo ($active == 'reports') ? 'active' : '' ?>sidebar-link waves-effect waves-dark sidebar-link" href="reports.php"
                                 aria-expanded="false">
                                 <i class="fa fa-list" aria-hidden="true"></i>

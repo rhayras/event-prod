@@ -17,7 +17,7 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book an appointment</a>
+      <a href="#book-an-appointment" class="book-a-table-btn scrollto d-none d-lg-flex">Book an appointment</a>
 
     </div>
   </header><!-- End Header -->

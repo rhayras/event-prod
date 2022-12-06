@@ -1739,3 +1739,134 @@ section {
   background: #cda45e !important;
   color: #fff !important;
 }
+
+.pignose-calendar.pignose-calendar-dark,.pignose-calendar.pignose-calendar-dark .pignose-calendar-top{
+  background-color: transparent !important;
+  border: 1px solid #cda45e !important;
+}
+
+.pignose-calendar.pignose-calendar-dark .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-disabled a{
+  text-decoration: line-through !important;
+  background-color: transparent !important;
+}
+.pignose-calendar .pignose-calendar-unit.pignose-calendar-unit-disabled a{
+  background-color: transparent !important;
+}
+
+.pignose-calendar .pignose-calendar-top .pignose-calendar-top-date{
+  padding: 0 !important;
+}
+
+.pignose-calendar .pignose-calendar-top{
+  padding: 20px !important;
+}
+.pignose-calendar .pignose-calendar-unit{
+  float: left !important;
+  display: block !important;
+  height: 2em !important;
+  width: 14.28% !important;
+  text-align: center !important;
+  /* line-height: 2.8em !important; */
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+.pignose-calendar .pignose-calendar-unit a{
+  border-radius: 0 !important;
+}
+
+.tab-content{
+  width: 100% !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+  background-color: #153D28 !important;
+}
+
+.nav-pills .nav-link{
+  border-radius: 0 !important;
+  background-color:gainsboro;
+}
+
+.responsive-tab-menu .nav-pills .nav-link.active,
+.responsive-tab-menu .nav-pills .show>.nav-link {
+  color: unset;
+}
+
+@media (max-width: 767px) {
+
+  .responsive-tab-content,
+  .responsive-tab-menu {
+    display: block !important;
+  }
+
+  .nav-pills.nav-tabs-dropdown,
+  .nav-tabs-dropdown {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .nav-pills.nav-tabs-dropdown::after,
+  .nav-tabs-dropdown::after {
+    content: "☰";
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .nav-pills.nav-tabs-dropdown.open a,
+  .nav-tabs-dropdown.open a {
+    position: relative;
+    display: block;
+  }
+
+  .nav-pills.nav-tabs-dropdown li,
+  .nav-tabs-dropdown li {
+    display: block;
+    padding: 0;
+    vertical-align: bottom;
+  }
+
+  .nav-pills.nav-tabs-dropdown > li > a,
+  .nav-tabs-dropdown > li > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border-color: transparent;
+  }
+
+  .nav-pills.nav-tabs-dropdown > li > a:focus,
+  .nav-tabs-dropdown > li > a:focus,
+  .nav-pills.nav-tabs-dropdown > li > a:hover,
+  .nav-tabs-dropdown > li > a:hover,
+  .nav-pills.nav-tabs-dropdown > li > a:active,
+  .nav-tabs-dropdown > li > a:active {
+    border-color: transparent;
+  }
+
+  .nav-pills.nav-tabs-dropdown > li >a.active,
+  .nav-tabs-dropdown > li > a.active {
+    display: block;
+    border-color: transparent;
+    position: relative;
+    z-index: 1;
+    background: #222;
+  }
+
+  .nav-pills.nav-tabs-dropdown > li.active > a:focus,
+  .nav-tabs-dropdown > li.active > a:focus,
+  .nav-pills.nav-tabs-dropdown > li.active > a:hover,
+  .nav-tabs-dropdown > li.active > a:hover,
+  .nav-pills.nav-tabs-dropdown > li.active > a:active,
+  .nav-tabs-dropdown > li.active > a:active {
+    border-color: transparent;
+  }
+}

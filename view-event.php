@@ -32,7 +32,7 @@ $inclussions = implode(',',json_decode($eventInfo['Inclussions'],true));
 
   <nav id="navbar" class="navbar order-last order-lg-0">
     <ul>
-      <li><a class="nav-link scrollto active" href="index.php#hero">Home</a></li>
+      <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
       <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
       <li><a class="nav-link scrollto" href="index.php#events">Events</a></li>
       <li><a class="nav-link scrollto" href="index.php#testimonials">Feedbacks</a></li>
@@ -41,7 +41,7 @@ $inclussions = implode(',',json_decode($eventInfo['Inclussions'],true));
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav><!-- .navbar -->
-  <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book an appointment</a>
+  <a href="index.php#book-an-appointment" class="book-a-table-btn scrollto d-none d-lg-flex">Book an appointment</a>
 
 </div>
 </header><!-- End Header -->
@@ -55,7 +55,7 @@ $inclussions = implode(',',json_decode($eventInfo['Inclussions'],true));
           <h2>Let us handle your most important events in your life. We will make it remarkable in everyone's memory</h2>
 
           <div class="btns">
-            <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Book an appointment</a>
+            <a href="index.php#book-an-appointment" class="btn-book animated fadeInUp scrollto">Book an appointment</a>
           </div>
         </div>
       </div>
