@@ -12,7 +12,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -52,8 +52,8 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium"><?php echo $userInfo['Firstname']." ".$userInfo['Lastname']?></span></a>
+                               <span class="text-white font-medium"><?php echo $userInfo['Firstname']." ".$userInfo['Lastname']?></span>
+                           </a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -132,10 +132,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="<?php echo ($active == 'reports') ? 'active' : '' ?>sidebar-link waves-effect waves-dark sidebar-link" href="reports.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.php"
                                 aria-expanded="false">
-                                <i class="fa fa-list" aria-hidden="true"></i>
-                                <span class="hide-menu">Reports</span>
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                <span class="hide-menu">Logout</span>
                             </a>
                         </li>
                     </ul>

@@ -27,6 +27,7 @@
 
   <!-- Template Main JS File -->
   <script src="admin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="assets/js/sweetalert.min.js"></script>
   <script src="assets/js/main.js"></script>
 
   <script src="assets/vendor/calendar/js/pignose.calendar.full.min.js"></script>

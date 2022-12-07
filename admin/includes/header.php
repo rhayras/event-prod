@@ -29,6 +29,8 @@ $userInfo = $processSql->fetch_assoc();
 
     <link href="plugins/bower_components/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="js/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
     <!-- Custom CSS -->
    <!-- <link href="css/style.css" rel="stylesheet"> -->
    <link href="css/style.min.css" rel="stylesheet">

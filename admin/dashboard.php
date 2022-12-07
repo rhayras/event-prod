@@ -6,7 +6,7 @@ $active = "dashboard";
 include("includes/sidetop.php");
 
 ?>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 <div class="page-wrapper" style="min-height: 250px;">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -38,8 +38,68 @@ include("includes/sidetop.php");
         <!-- ============================================================== -->
         <div class="row">
             <div class="col-md-12">
-                <div class="white-box">
-                    <h3 class="box-title">Blank Page</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-body" style="background-color: #cda45e; color: white">
+                            <div class="lead"><h4><b>Upcoming Appointments</b></h4></div>
+                            <?php
+                                $sql = "SELECT COUNT(*) as totalAppointments FROM appointments WHERE Status = 'Approved'";
+                                $process = $db->query($sql);
+                                $totalAppointments = $process->fetch_assoc()['totalAppointments'];
+                                echo "<h2 class='card-title'>".$totalAppointments."</h2>";
+                            ?>
+                            <!-- <p class="small text-muted">Oct 1 - Dec 31,<i class="fa fa-globe"></i> Worldwide</p> -->
+                        </div>
+                    </div>
+                    </div> 
+                    <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-body" style="background-color: #153D28; color: white">
+                            <div class="lead"><h4><b>Booked Events</b></h4></div>
+                            <?php
+                                $sql = "SELECT COUNT(*) as totalAppointments FROM appointments WHERE Status = 'EventBooked'";
+                                $process = $db->query($sql);
+                                $totalAppointments = $process->fetch_assoc()['totalAppointments'];
+                                echo "<h2 class='card-title'>".$totalAppointments."</h2>";
+                            ?>
+                            <!-- <p class="small text-muted">Oct 1 - Dec 31,<i class="fa fa-globe"></i> Worldwide</p> -->
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-body" style="background-color: #5f6944; color: white">
+                            <div class="lead"><h4><b>Finished Events</b></h4></div>
+                            <?php
+                                $sql = "SELECT COUNT(*) as totalAppointments FROM appointments WHERE Status = 'Done'";
+                                $process = $db->query($sql);
+                                $totalAppointments = $process->fetch_assoc()['totalAppointments'];
+                                echo "<h2 class='card-title'>".$totalAppointments."</h2>";
+                            ?>
+                            <!-- <p class="small text-muted">Oct 1 - Dec 31,<i class="fa fa-globe"></i> Worldwide</p> -->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Appointments Today</h3>
+                        <div class="appointment-list"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Events Today</h3>
+                        <div class="event-list"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,3 +120,33 @@ include("includes/sidetop.php");
 </div>
 
 <?php include("includes/footer.php") ?>
+
+<script>
+    function appointmentsToday(){
+        $.ajax({
+            url     : '../ajax.php?action=appointmentsToday',
+            method  :   'POST',
+            dataType:   'JSON',
+            success: function (data) {
+               $(".appointment-list").html(data.output);
+            },
+            error: function(res){
+                console.log(res.responseText);
+            }
+        });
+    } appointmentsToday();
+    function eventsToday(){
+        $.ajax({
+            url     : '../ajax.php?action=eventsToday',
+            method  :   'POST',
+            dataType:   'JSON',
+            success: function (data) {
+               $(".event-list").html(data.output);
+            },
+            error: function(res){
+                console.log(res.responseText);
+            }
+        });
+    } eventsToday();
+
+</script>

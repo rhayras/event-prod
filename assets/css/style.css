@@ -1870,3 +1870,9 @@ section {
     border-color: transparent;
   }
 }
+
+.swal2-confirm {
+  background-color: #153D28 !important;
+  color: white !important;
+  border: 1px solid #153D28 !important;
+}
