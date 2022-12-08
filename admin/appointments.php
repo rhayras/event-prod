@@ -204,6 +204,18 @@ include("includes/sidetop.php");
                                                           </ul>
                                                         </div>
                                                     ';
+                                                }elseif($result['Status'] == "EventBooked"){
+                                                    $action = '
+                                                        <div class="dropdown">
+                                                          <button type="button" data-bs-boundary="viewport"  class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                                                Action
+                                                          </button>
+                                                          <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item action-view" data-id="'.$result['ID'].'" href="javascript:void(0)">View</a></li>
+                                                            <li><a class="dropdown-item action-done" data-id="'.$result['ID'].'" href="javascript:void(0)">Done</a></li>
+                                                          </ul>
+                                                        </div>
+                                                    ';
                                                 }else{
                                                     $action = '
                                                         <div class="dropdown">
@@ -482,6 +494,41 @@ include("includes/sidetop.php");
                         console.log(res.responseText);
                     }
                 });
+            }
+        });
+    });
+
+    //event cancelled
+    $(document).on("click",".action-done",function(){
+        var id = $(this).data("id");
+        $.ajax({
+            url     : '../ajax.php?action=markAsDone',
+            method  :   'POST',
+            dataType:   'JSON',
+            data    :   {id:id},
+            success: function (data) {
+                console.log(data);
+                if(data.success){
+                    Swal.fire({
+                        title: 'Great',
+                        icon: 'success',
+                        text: "Event finished!",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: 'Ok',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                             window.location.href = "appointments.php";
+                        }
+                    })
+
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function(res){
+                console.log(res.responseText);
             }
         });
     });

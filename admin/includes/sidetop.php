@@ -132,6 +132,13 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="<?php echo ($active == 'reports') ? 'active' : '' ?>sidebar-link waves-effect waves-dark sidebar-link" href="reports.php"
+                                aria-expanded="false">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                <span class="hide-menu">Reports</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.php"
                                 aria-expanded="false">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>

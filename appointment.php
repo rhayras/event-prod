@@ -362,7 +362,7 @@ include("includes/header.php");
     $('.appointment-calendar').pignoseCalendar({
         select: getTime,
         theme: 'dark',
-        minDate: "<?php echo date("Y-m-d", strtotime("+4 days")) ?>",
+        minDate: "<?php echo date("Y-m-d", strtotime("+3 days")) ?>",
         // disabledDates: [
         //     '2022-12-08'
         // ]

@@ -114,6 +114,41 @@ $inclussions = implode(',',json_decode($eventInfo['Inclussions'],true));
         </div>
       </div>
     </section><!-- End About Section -->
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Gallery</h2>
+          <p>Some photos from Our <?php echo $eventInfo['Event']?> Events</p>
+        </div>
+      </div>
+
+      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+        <?php
+            $sqlImage = "SELECT * FROM gallery WHERE Category = ".$event." ORDER BY rand()";
+            $processImage = $db->query($sqlImage);
+            if($processImage->num_rows > 0){
+                while($row = $processImage->fetch_assoc()){
+                    ?>
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item" style="height: 300px;">
+                          <a href="assets/img/gallery/<?php echo $row['image']?>" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="assets/img/gallery/<?php echo $row['image']?>" alt="" class="img-fluid" style="height: 100%;object-fit: cover;">
+                          </a>
+                        </div>
+                      </div>
+                    <?php
+                }
+            }
+
+        ?>
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->
 
   </main><!-- End #main -->
 

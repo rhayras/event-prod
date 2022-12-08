@@ -1,6 +1,8 @@
 <?php
 include("db.php");
 
+$base = "http://localhost/event-prod/";
+
 $action = isset($_GET['action']) ? $_GET['action'] : "";
 
 if($action != ""){
@@ -456,7 +458,7 @@ if($action != ""){
 		$output = "";
 		$output = "<br/>";
 
-		$sql = "SELECT appointments.*,events.Event as eventName,events.ID as eventID FROM appointments JOIN events ON appointments.Event = events.ID WHERE appointments.Status = 'EventBooked' AND appointments.AppointmentDate = '".date('Y-m-d')."' ";
+		$sql = "SELECT appointments.*,events.Event as eventName,events.ID as eventID FROM appointments JOIN events ON appointments.Event = events.ID WHERE appointments.Status = 'EventBooked' AND appointments.EventDate = '".date('Y-m-d')."' ";
 		$process = $db->query($sql);
 		if($process->num_rows > 0){
 			$output .= "<ul>";
@@ -472,5 +474,78 @@ if($action != ""){
 
 		$result['output'] = $output;
 	}
+	elseif($action == "markAsDone"){
+		$id = $_POST['id'];
+
+
+		$sql = "SELECT appointments.*,events.Event as eventName,events.Status as eventStatus,places.Place FROM appointments 
+        	JOIN events ON events.ID = appointments.Event 
+        	JOIN places ON places.ID = appointments.AppointmentPlace WHERE appointments.ID = ".$id;
+    	$process = $db->query($sql);
+    	$info = $process->fetch_assoc();
+
+		$update = "UPDATE appointments set Status = 'Done' WHERE ID = ".$id;
+		$process = $db->query($update);
+		if($process){
+			$recipient = $info['Email'];
+
+			$link = $base."feedback-form.php?eid=".base64_encode($recipient);
+
+
+			$subject = "Feedback Form";
+
+			$html = "Good Day ".$info['FullName']."<br/>";
+			$html .= "<p>Thank you for trusting us to be your coordinator. That was a great experience and a wonderful event! We would like you to have your feedback with our service.<br/> Kindly visit the link below to submit your feedback.</p>";
+
+			$html .= "<a href='".$link."' target='_blank'>Go to Feedback form</a>";
+			$html .= "<br/><br/>Once again, Thank you and see you again!";
+
+
+			$scriptUrl = "https://script.google.com/macros/s/AKfycbyL8Cx4ani95yDgOR06ZBajmQILAuy4PsSgvCPiT2bG4KLasQGbauiGF82MEis4cX0oJg/exec";
+
+			$data = array(
+			   "recipient" => $recipient,
+			   "subject" => $subject,
+			   "body" => $html,
+			   "isHTML" => 'true'
+			);
+
+			$ch = curl_init($scriptUrl);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+			$emailsend = curl_exec($ch);
+
+			$result['success'] = $emailsend;
+		}else{
+    		$result['success'] = false;
+    		$result['msg'] = $update;
+    	}
+	}
+	elseif($action == "showFeedback"){
+		$id = $_POST['id'];
+
+    	$update = "UPDATE feedbacks set Status = 1 WHERE ID = ".$id;
+    	$processUpdate = $db->query($update);
+    	if($processUpdate){
+			$result['success'] = true;
+    	}else{
+    		$result['success'] = false;
+    		$result['msg'] = $update;
+    	}
+	}
+	elseif($action == "hideFeedback"){
+		$id = $_POST['id'];
+
+    	$update = "UPDATE feedbacks set Status = 0 WHERE ID = ".$id;
+    	$processUpdate = $db->query($update);
+    	if($processUpdate){
+			$result['success'] = true;
+    	}else{
+    		$result['success'] = false;
+    		$result['msg'] = $update;
+    	}
+	}
+	
 	echo json_encode($result);
 }
